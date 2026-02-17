@@ -16,6 +16,7 @@ st.markdown("Interactive dashboard for screening data analysis")
 @st.cache_data
 def load_data():
     df = pd.read_excel("Assignment_dataset.xlsx")
+     df = pd.read_excel(file_path, engine="openpyxl")
     df.columns = df.columns.str.strip()
     df['q7'] = pd.to_numeric(df['q7'], errors='coerce')
     df['q46'] = pd.to_numeric(df['q46'], errors='coerce')
@@ -130,4 +131,5 @@ st.download_button(
     "Download Summary CSV",
     summary.to_csv(index=False),
     "facility_summary.csv"
+
 )
